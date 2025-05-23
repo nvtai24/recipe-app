@@ -1,19 +1,17 @@
 import { useState } from "react";
 import Search from "./components/Search";
+import FoodList from "./components/FoodList";
+import Nav from "./components/Nav";
+import "./App.css";
 
 function App() {
   const [foods, setFoods] = useState([]);
 
   return (
     <div className="app">
+      <Nav />
       <Search foods={foods} setFoods={setFoods} />
-
-      {foods.map((food) => (
-        <div>
-          <h5>{food.title}</h5>
-          <img src={food.image} alt="" width="50px" />
-        </div>
-      ))}
+      <FoodList foods={foods} />
     </div>
   );
 }

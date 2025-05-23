@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./Search.module.css";
 
 export default function Search({ foods, setFoods }) {
   const [query, setQuery] = useState("pizza");
@@ -8,18 +9,36 @@ export default function Search({ foods, setFoods }) {
 
   useEffect(() => {
     async function fetchFood() {
-      const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
-      const data = await res.json();
+      // const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
+      // const data = await res.json();
 
-      setFoods(data.results);
+      // console.log(data);
+
+      // setFoods(data.results);
+
+      let fakeFood = [
+        {
+          id: 1,
+          title: "Pizza",
+          image: "https://placehold.co/600x400",
+        },
+        {
+          id: 2,
+          title: "Burger",
+          image: "https://placehold.co/600x400",
+        },
+      ];
+
+      setFoods(fakeFood);
     }
 
     fetchFood();
   }, [query]);
 
   return (
-    <div>
+    <div className={styles.searchContainer}>
       <input
+        className={styles.input}
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
