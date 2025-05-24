@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./FoodDetail.module.css";
+import IngredientList from "./IngredientList";
 
 export default function FoodDetail({ foodId }) {
   const [food, setFood] = useState(null);
@@ -17,6 +18,9 @@ export default function FoodDetail({ foodId }) {
       const res = await fetch(`${URL}?apiKey=${API_KEY}`);
       const data = await res.json();
       setFood(data);
+
+      console.log(data);
+
       setIsLoading(false);
     }
 
@@ -59,6 +63,11 @@ export default function FoodDetail({ foodId }) {
           <span>
             <strong>💰 {food.pricePerServing} / Serving</strong>
           </span>
+        </div>
+
+        <h2>Ingredients</h2>
+        <div className={styles.recipeIngredients}>
+          <IngredientList ingredients={food.extendedIngredients} />
         </div>
 
         <h2>Instructions</h2>
