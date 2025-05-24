@@ -37,33 +37,40 @@ export default function FoodDetail({ foodId }) {
 
   return (
     <div>
-      <h1>{food.title}</h1>
-      <img src={food.image} alt={food.title} />
+      <div className={styles.recipeCard}>
+        <h1 className={styles.recipeName}>{food.title}</h1>
+        <img src={food.image} alt={food.title} className={styles.recipeImage} />
 
-      <div>
-        <span>
-          <strong>⏱️{food.readyInMinutes} Minutes</strong>
-        </span>
-        <span>
-          <strong>👨‍👩‍👧‍👦 Serves {food.servings}</strong>
-        </span>
-        <span>{food.vegetarian ? "🥗 Vegetarian" : "🍔 Non-Vegetarian"}</span>
-        <span>{food.vegan ? "🥕 Vegan" : "🐄 Non-vegan"}</span>
-      </div>
+        <div className={styles.recipeDetails}>
+          <span>
+            <strong>⏱️{food.readyInMinutes} Minutes</strong>
+          </span>
+          <span>
+            <strong>👨‍👩‍👧‍👦 Serves {food.servings}</strong>
+          </span>
+          <span>
+            <strong>
+              {food.vegetarian ? "🥗 Vegetarian" : "🍔 Non-Vegetarian"}
+            </strong>
+          </span>
+        </div>
 
-      <div>
-        <span>💸 {food.pricePerServing}</span>
-      </div>
+        <div>
+          <span>
+            <strong>💰 {food.pricePerServing} / Serving</strong>
+          </span>
+        </div>
 
-      <div>
         <h2>Instructions</h2>
-        <ul>
-          {food.analyzedInstructions &&
-            food.analyzedInstructions.length > 0 &&
-            food.analyzedInstructions[0].steps.map((step, index) => (
-              <li key={index}>{step.step}</li>
-            ))}
-        </ul>
+        <div className={styles.recipeInstructions}>
+          <ol>
+            {food.analyzedInstructions &&
+              food.analyzedInstructions.length > 0 &&
+              food.analyzedInstructions[0].steps.map((step, index) => (
+                <li key={index}>{step.step}</li>
+              ))}
+          </ol>
+        </div>
       </div>
     </div>
   );
