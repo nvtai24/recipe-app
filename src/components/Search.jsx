@@ -9,27 +9,26 @@ export default function Search({ foods, setFoods }) {
 
   useEffect(() => {
     async function fetchFood() {
-      // const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
-      // const data = await res.json();
+      const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
+      const data = await res.json();
 
-      // console.log(data);
+      console.log(data);
 
-      // setFoods(data.results);
+      setFoods(data.results);
 
-      let fakeFood = [
-        {
-          id: 1,
-          title: "Pizza",
-          image: "https://placehold.co/600x400",
-        },
-        {
-          id: 2,
-          title: "Burger",
-          image: "https://placehold.co/600x400",
-        },
-      ];
-
-      setFoods(fakeFood);
+      // let fakeFood = [
+      //   {
+      //     id: 1,
+      //     title: "Pizza",
+      //     image: "https://placehold.co/600x400",
+      //   },
+      //   {
+      //     id: 2,
+      //     title: "Burger",
+      //     image: "https://placehold.co/600x400",
+      //   },
+      // ];
+      // setFoods(fakeFood);
     }
 
     fetchFood();
