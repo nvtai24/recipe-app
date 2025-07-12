@@ -1,11 +1,18 @@
 import IngredientItem from "./IngredientItem";
-import styles from "./IngredientList.module.css";
 
 export default function IngredientList({ ingredients }) {
+  if (!ingredients || ingredients.length === 0) {
+    return (
+      <div className="text-center text-muted">
+        <p>No ingredient information available.</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {ingredients.map((item) => (
-        <IngredientItem ingredient={item} />
+    <div className="d-flex flex-column gap-3">
+      {ingredients.map((ingredient, index) => (
+        <IngredientItem key={index} ingredient={ingredient} />
       ))}
     </div>
   );
